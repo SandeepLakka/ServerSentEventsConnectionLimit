@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Ticker</title>
+</head>
+<body>
+<h1>Stock Ticker Realtime Updates</h1>
+<div>
+    <label for="ticker">Enter Ticker:</label>
+    <input type="text" id="ticker" placeholder="e.g., AAPL">
+    <button onclick="subscribe()">Subscribe</button>
+</div>
+<div>
+    <h2>Realtime Updates:</h2>
+    <pre id="updates"></pre>
+</div>
+<div>
+    <h2>Ticker Information:</h2>
+    <pre id="tickerInfo"></pre>
+</div>
+<div>
+    <h2>All Tickers:</h2>
+    <pre id="allTickers"></pre>
+</div>
+<div>
+    <h2>Subscriber Count:</h2>
+    <pre id="subscriberCount"></pre>
+</div>
+
+<script>
+        let eventSource;
+
+        function subscribe() {
+            const ticker = document.getElementById('ticker').value;
+            if (eventSource) eventSource.close();
+
+            // First subscribe call
+            eventSource = new EventSource(`https://localhost:8080/api/stock/subscribe/${ticker}`);
+            eventSource.onmessage = function(event) {
+                document.getElementById('updates').textContent += event.data + '\n';
+            };
+
+            // Fetch and display additional information
+            fetchTickerInfo(ticker);
+            fetchAllTickers();
+            fetchSubscriberCount(ticker);
+            eventSource = new EventSource(`https://localhost:8080/api/stock/subscribe/${ticker}`);
+            eventSource.onmessage = function(event) {
+                document.getElementById('updates').textContent += event.data + '\n';
+            };
+        }
+
+        function fetchTickerInfo(ticker) {
+            fetch(`https://localhost:8080/api/stock/info/${ticker}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('tickerInfo').textContent = data;
+                });
+        }
+
+        function fetchAllTickers() {
+            fetch('https://localhost:8080/api/stock/all')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('allTickers').textContent = data;
+                });
+        }
+
+        function fetchSubscriberCount(ticker) {
+            fetch(`https://localhost:8080/api/stock/subscribers/${ticker}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('subscriberCount').textContent = `Subscribers for ${ticker}: ${data}`;
+                });
+        }
+    </script>
+</body>
+</html>
