@@ -141,7 +141,12 @@ If you encounter SSL/TLS certificate validation errors (e.g., `PKIX path buildin
 ## **References**
 1. [MDN Web Docs - EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource)
 2. [Understanding Max Parallel HTTP Connections in Browsers](https://medium.com/@sathyanvimala1995/understanding-max-parallel-http-connections-in-browsers-d949f18ef8eb)
-
+3. [Server-Sent Events Connection Limit](https://github.com/SandeepLakka/ServerSentEventsConnectionLimit)
+4. [Chromium Issue: Connection Limits](https://issues.chromium.org/issues/40329530)
+5. [Server-Sent Events Crash Course by Hussein Nasser](https://www.youtube.com/watch?v=4HlNv1qpZFY)
+6. [WebSockets vs Server-Sent Events](https://stackoverflow.com/questions/5195452/websockets-vs-server-sent-events-eventsource/5326159)
+7. [HTTP/2 Connection Limits](https://stackoverflow.com/questions/36835972/is-the-per-host-connection-limit-raised-with-http-2/36847527#36847527)
+8. [Chromium Code Search: SETTINGS_MAX_CONCURRENT_STREAMS](https://github.com/search?q=repo%3Achromium%2Fchromium+SETTINGS_MAX_CONCURRENT_STREAMS+&type=code)
 ---
 
 ## **Contributing**
