@@ -1,4 +1,4 @@
-# ServerSentEventsConnectionLimit
+# Browser Connection Limit and Server Sent Events (SSEs)
 Project to check Maximum # of parallel connections from browser to server with SSEs functionality.
 
 ## SSE and Spring Boot
