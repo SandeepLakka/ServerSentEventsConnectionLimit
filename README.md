@@ -51,7 +51,9 @@ Learn more about SSE: [MDN Web Docs - EventSource](https://developer.mozilla.org
 ### **HTTP/2 Multiplexing**
 HTTP/2 allows multiple requests and responses to be multiplexed over a single connection, eliminating the need for multiple connections to the same origin. This improves performance and reduces resource usage.
 
-Learn more about HTTP/2: [Understanding Max Parallel HTTP Connections in Browsers](https://medium.com/@sathyanvimala1995/understanding-max-parallel-http-connections-in-browsers-d949f18ef8eb)
+Learn more about HTTP/2: 
+- [Understanding Max Parallel HTTP Connections in Browsers](https://medium.com/@sathyanvimala1995/understanding-max-parallel-http-connections-in-browsers-d949f18ef8eb)
+- [How HTTP/2 Works, Performance, Pros & Cons and More by Hussein Nasser](https://www.youtube.com/watch?v=fVKPrDrEwTI)
 
 ---
 
@@ -141,17 +143,23 @@ If you encounter SSL/TLS certificate validation errors (e.g., `PKIX path buildin
 ## **References**
 1. [MDN Web Docs - EventSource](https://developer.mozilla.org/en-US/docs/Web/API/EventSource)
 2. [Understanding Max Parallel HTTP Connections in Browsers](https://medium.com/@sathyanvimala1995/understanding-max-parallel-http-connections-in-browsers-d949f18ef8eb)
-3. [Server-Sent Events Connection Limit](https://github.com/SandeepLakka/ServerSentEventsConnectionLimit)
-4. [Chromium Issue: Connection Limits](https://issues.chromium.org/issues/40329530)
-5. [Server-Sent Events Crash Course by Hussein Nasser](https://www.youtube.com/watch?v=4HlNv1qpZFY)
-6. [WebSockets vs Server-Sent Events](https://stackoverflow.com/questions/5195452/websockets-vs-server-sent-events-eventsource/5326159)
-7. [HTTP/2 Connection Limits](https://stackoverflow.com/questions/36835972/is-the-per-host-connection-limit-raised-with-http-2/36847527#36847527)
-8. [Chromium Code Search: SETTINGS_MAX_CONCURRENT_STREAMS](https://github.com/search?q=repo%3Achromium%2Fchromium+SETTINGS_MAX_CONCURRENT_STREAMS+&type=code)
+3. [Chromium Issue: Connection Limits](https://issues.chromium.org/issues/40329530)
+4. [Server-Sent Events Crash Course by Hussein Nasser](https://www.youtube.com/watch?v=4HlNv1qpZFY)
+5. [WebSockets vs Server-Sent Events](https://stackoverflow.com/questions/5195452/websockets-vs-server-sent-events-eventsource/5326159)
+6. [HTTP/2 Connection Limits](https://stackoverflow.com/questions/36835972/is-the-per-host-connection-limit-raised-with-http-2/36847527#36847527)
+7. [Chromium Code Search: SETTINGS_MAX_CONCURRENT_STREAMS](https://github.com/search?q=repo%3Achromium%2Fchromium+SETTINGS_MAX_CONCURRENT_STREAMS+&type=code)
 ---
 
 ## **Contributing**
 Contributions are welcome! Please open an issue or submit a pull request.
 
 ---
+
+## **Open Q&A**
+- Is the Load balancer (Service/Route) in Openshift/Kubernetes L4 or L7? If it's L7, does it mean that we cannot use SSE with containerized applications in k8s/OC?
+- Can we have shared subscription from client (browser) side? if so, how do we cleanup the resource (connection) when there are no subscribers from client/server sides?
+- Web workers are mentioned in the references and SO, Interested to check on how they can accomplish this shared subscription and routing to different subscriptions
+- If application needs to be upgraded to H2, Regression testing needs to run on whole system to make sure we don't have surprises.
+- Scalability is a concern if we use stateful connections such as this (Websockets, SSEs etc), This needs to be keep in mind while scaling up.
 
 ## 🤘 SL
